@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff3e0; /* Light, warm background */
+    padding-bottom: 60px; /* Add padding to the bottom to avoid content being hidden behind the fixed button */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #ff5722; /* Vibrant, appetite-stimulating color */
+    color: #fff;
+}
+
+.menu {
+    padding: 50px 0;
+}
+
+.menu-section {
+    margin-bottom: 50px;
+}
+
+.menu-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #ff7043; /* Warm, inviting color */
+}
+
+.menu-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu-item {
+    background-color: #fff3e0; /* Light, complementary background */
+    border: 1px solid #ffccbc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    width: 200px;
+}
+
+.menu-item h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #d84315; /* Deep, rich color */
+}
+
+.price {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #bf360c; /* Highlight price with a bold color */
+}
+
+.menu-item img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 2px solid #ffab91; /* Highlight the image */
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity button {
+    background-color: #d32f2f; /* Rich red for buttons */
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.quantity .item-count {
+    font-size: 16px;
+    width: 30px;
+    text-align: center;
+    color: #ff7043; /* Highlight item count */
+}
+
+.cart {
+    margin-top: 50px;
+}
+
+.cart-items {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+.checkout {
+    background-color: #d32f2f; /* Consistent button color */
+    color: #fff;
+    border: none;
+    padding: 15px 30px; /* Increased padding for better touch targets on mobile */
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 10px; /* Distance from the bottom */
+    right: 10px; /* Distance from the right */
+    z-index: 1000; /* Ensure it is above other elements */
+    font-size: 18px; /* Larger font size for better readability */
+}
+
+.footer {
+    text-align: center;
+    background-color: #d84315; /* Deep color for the footer */
+    color: #fff;
+    padding: 20px 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .menu-item {
+        width: 100%; /* Full width for menu items on smaller screens */
+        margin: 10px 0;
+    }
+
+    .checkout {
+        width: calc(100% - 20px); /* Full width with some padding */
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+    }
+}
+
+.total-container {
+    position: fixed;
+    bottom: 70px; /* Adjusted bottom position to provide space for the checkout button */
+    left: 10px;
+    right: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.total-container p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.checkout {
+    background-color: #d32f2f; /* Consistent button color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px; /* Adjusted padding for better appearance */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Larger font size for better readability */
+    margin-right: 10px; /* Added margin to separate the button from the items */
+}
