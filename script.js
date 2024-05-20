@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addItemButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const itemCountElement = button.previousElementSibling;
+            const itemCountElement = button.parentElement.querySelector('.item-count');
             let itemCount = parseInt(itemCountElement.textContent);
             itemCountElement.textContent = ++itemCount;
             updateItemNames();
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     removeItemButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const itemCountElement = button.nextElementSibling;
+            const itemCountElement = button.parentElement.querySelector('.item-count');
             let itemCount = parseInt(itemCountElement.textContent);
             if (itemCount > 0) {
                 itemCountElement.textContent = --itemCount;
