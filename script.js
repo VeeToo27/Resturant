@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Select all the add and remove buttons
     const addItemButtons = document.querySelectorAll('.add-item');
     const removeItemButtons = document.querySelectorAll('.remove-item');
     const itemListContainer = document.querySelector('.item-names');
+    const checkoutButton = document.getElementById('checkout-button');
 
-    // Function to update the item names and quantities
     const updateItemNames = () => {
-        let itemNamesHTML = ''; // Initialize an empty string for item names HTML
+        let itemNamesHTML = ''; 
         document.querySelectorAll('.menu-item').forEach(item => {
             const itemName = item.querySelector('h3').textContent;
             const itemCount = parseInt(item.querySelector('.item-count').textContent);
@@ -14,12 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 itemNamesHTML += `${itemCount}x ${itemName}, `;
             }
         });
-        // Remove the trailing comma and space
         itemNamesHTML = itemNamesHTML.slice(0, -2);
-        itemListContainer.textContent = itemNamesHTML; // Set the item names HTML
+        itemListContainer.textContent = itemNamesHTML; 
     };
 
-    // Add event listeners to all add buttons
     addItemButtons.forEach(button => {
         button.addEventListener('click', () => {
             const itemCountElement = button.previousElementSibling;
@@ -29,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add event listeners to all remove buttons
     removeItemButtons.forEach(button => {
         button.addEventListener('click', () => {
             const itemCountElement = button.nextElementSibling;
@@ -39,5 +35,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateItemNames();
             }
         });
+    });
+
+    checkoutButton.addEventListener('click', () => {
+        let selectedItems = [];
+        document.querySelectorAll('.menu-item').forEach(item => {
+            const itemName = item.querySelector('h3').textContent;
+            const itemCount = parseInt(item.querySelector('.item-count').textContent);
+            if (itemCount > 0) {
+                selectedItems.push({ name: itemName, count: itemCount });
+            }
+        });
+
+        if (selectedItems.length > 0) {
+            fetch('https://veetoo27.github.io/ResturantServer', { // Updated URL
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ items: selectedItems })
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(`Order confirmed: ${data}`);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while placing the order.');
+            });
+        } else {
+            alert('No items selected.');
+        }
     });
 });
