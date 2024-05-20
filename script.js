@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (selectedItems.length > 0) {
             // Use a placeholder URL for testing
-            const placeholderURL = 'https://jsonplaceholder.typicode.com/posts'; 
+            const placeholderURL = 'https://veetoo27.github.io/ResturantServer/'; 
             fetch(placeholderURL, { 
                 method: 'POST',
                 headers: {
