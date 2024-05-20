@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (selectedItems.length > 0) {
-            fetch('https://veetoo27.github.io/ResturantServer', { // Updated URL
+            fetch('https://veetoo27.github.io/ResturantServer/', { // Updated URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
