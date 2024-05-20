@@ -48,7 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (selectedItems.length > 0) {
-            fetch('https://veetoo27.github.io/ResturantServer/', { // Updated URL
+            // Use a placeholder URL for testing
+            const placeholderURL = 'https://jsonplaceholder.typicode.com/posts'; 
+            fetch(placeholderURL, { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -64,6 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('An error occurred while placing the order.');
             });
         } else {
+            alert('No items selected.');
+        }
+    });
+});
+
             alert('No items selected.');
         }
     });
