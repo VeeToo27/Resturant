@@ -17,15 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
         itemListContainer.textContent = itemNamesHTML; 
     };
 
-    console.log("Add item buttons:", addItemButtons);
-    console.log("Remove item buttons:", removeItemButtons);
-    console.log("Item list container:", itemListContainer);
-    console.log("Checkout button:", checkoutButton);
-
     addItemButtons.forEach(button => {
         button.addEventListener('click', () => {
-            console.log("Add item button clicked.");
-            const itemCountElement = button.parentElement.querySelector('.item-count');
+            const itemCountElement = button.previousElementSibling;
             let itemCount = parseInt(itemCountElement.textContent);
             itemCountElement.textContent = ++itemCount;
             updateItemNames();
@@ -34,8 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     removeItemButtons.forEach(button => {
         button.addEventListener('click', () => {
-            console.log("Remove item button clicked.");
-            const itemCountElement = button.parentElement.querySelector('.item-count');
+            const itemCountElement = button.nextElementSibling;
             let itemCount = parseInt(itemCountElement.textContent);
             if (itemCount > 0) {
                 itemCountElement.textContent = --itemCount;
@@ -45,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     checkoutButton.addEventListener('click', () => {
-        console.log("Checkout button clicked.");
         let selectedItems = [];
         document.querySelectorAll('.menu-item').forEach(item => {
             const itemName = item.querySelector('h3').textContent;
@@ -56,9 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (selectedItems.length > 0) {
-            // Use a placeholder URL for testing
-            const placeholderURL = 'https://veetoo27.github.io/ResturantServer/'; 
-            fetch(placeholderURL, { 
+            fetch('https://veetoo27.github.io/ResturantServer/', { // Updated URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -74,11 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('An error occurred while placing the order.');
             });
         } else {
-            alert('No items selected.');
-        }
-    });
-});
-
             alert('No items selected.');
         }
     });
